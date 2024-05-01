@@ -1,0 +1,155 @@
+#!/bin/env bash
+AFHOME=$1
+source $AFHOME/Manage/config
+MCversion=$(cat version)
+ServerName=$2
+config=$AFHOME/Manage/config
+StartSoftware=$(grep StartSoftware ${config} | sed 's/StartSoftware=//g')
+StartSoftwarePath=$AFHOME/Manage/StartSoftware
+BDSServerConfig(){
+OPTIONS=
+Num=$(jq '. | length' ServerProperties.json)
+Num=$(expr 18 - 1)
+for ((i=1; i<=${Num}; i++))
+do
+  ConfigurationName=$(jq .[${i}].ConfigurationName ServerProperties.json)
+  OPTIONS="${OPTIONS} $(expr ${i} - 1) ${ConfigurationName}"
+  OPTIONS=$(echo ${OPTIONS} | sed 's|"||g')
+done
+ScreenSizeMenu
+Number=$(whiptail \
+--title "MC-SM" \
+--menu "服务器版本: ${MCversion}" \
+${HEIGHT} ${WIDTH} ${OPTION} \
+${OPTIONS} \
+3>&1 1>&2 2>&3)
+
+ConfigInput(){
+ScreenSizeMsgbox
+
+}
+
+ConfigChoose(){
+if ! grep -q ${ConfigurationItem}
+then
+  ScreenSizeMsgbox
+  whiptail --title "白狐-Script" \
+  --msgbox "[错误] 配置项不存在" ${HEIGHT} ${WIDTH}
+  return
+fi
+ScreenSizeMsgbox
+OldConfig=$(grep "${ConfigurationItem}=")
+
+if $(dialog --title "MC-SM-Config" \
+--yes-button "开启" \
+--no-button "关闭" \
+--yesno ${Description} \
+${HEIGHT} ${WIDTH})
+then
+  OldConfig=$(grep "${ConfigurationItem}=")
+  sed -i "s/${OldConfig}/${NewConfig}/g" server.properties
+else
+  
+fi
+
+
+}
+
+
+ConfigurationItem=$(jq .[$(expr ${Number} - 1)].ConfigurationItem)
+type=$(jq .[$(expr ${Number} - 1)].type)
+Description=$(jq .[$(expr ${Number} - 1)].Description)
+
+case ${Number} in
+
+esac
+
+
+
+
+}
+ScreenSizeMenu
+Number=$(whiptail \
+--title "MC-SM" \
+--menu "服务器版本: ${MCversion}" \
+${HEIGHT} ${WIDTH} ${OPTION} \
+"1" "🍀 启动服务器" \
+"2" "🌸 关闭服务器" \
+"3" "🌵 日志服务器" \
+"4" "🍁 配置服务器" \
+"5" "🌼 备份服务器" \
+"6" "🌷 卸载服务器" \
+"0" "🍥 返回主菜单" \
+3>&1 1>&2 2>&3)
+case ${Number} in
+1)
+  ARCH=$(uname -m)
+  case "$ARCH" in
+    aarch64|arm64|armv8|armv9)
+    Command="cd $AFHOME/Server/${ServerName} && box64 bedrock_server"
+    bash ${StartSoftwarePath} ${StartSoftware} start ${ServerName} "${Command}"
+    ;;
+    x86_64|x64|amd64)
+    Command="cd $AFHOME/Server/${ServerName} && bedrock_server"
+    bash ${StartSoftwarePath} ${StartSoftware} start ${ServerName} "${Command}"
+    ;;
+  esac
+  ;;
+2)
+  bash ${StartSoftwarePath} ${StartSoftware} stop ${ServerName}
+  ;;
+3)
+  bash ${StartSoftwarePath} ${StartSoftware} log ${ServerName}
+  ;;
+4)
+  BDSServerConfig
+  ;;
+5)
+  ScreenSizeMsgbox
+  echo -e ${blue}[${green}*${blue}] ${cyan}开始备份${background}
+  Path=$(pwd)
+  cd ..
+  ZipName="$(date +%Y%m%d)-${ServerName}"
+  tar cf - ${ServerName} | gzip > ${ZipName}.tar.gz    
+  echo -e ${blue}[${green}*${blue}] ${cyan}备份完成${background}
+  if [ -d /sd ] || [ -d /sdcard ]
+  then
+    if [ ! -d /sdcard/Download/AFBackup ]
+    then
+      mkdir /sdcard/Download/AFBackup
+    fi
+    BackupPath="/sdcard/Download/AFBackup/${ZipName}.tar.gz"
+  else
+    if [ ! -d ../AFBackup ]
+    then
+      mkdir ../AFBackup
+    fi
+    BackupPath="${AFHOME}/${ZipName}.tar.gz"
+  fi
+  mv -f ${ZipName}.tar.gz ${BackupPath}
+  echo -e ${blue}[${green}*${blue}] ${cyan}已备份至 ${yellow}${BackupPath}${background}
+  cd ${Path}
+  ;;
+6)
+  ScreenSizeMsgbox
+  if ! ServerName=$(whiptail --title "卸载服务器"  \
+  --yes-button "确认" \
+  --no-button "返回" \
+  --yesno "是否确认卸载服务器?" ${HEIGHT} ${WIDTH} \
+  3>&1 1>&2 2>&3)
+  then
+    echo -e ${blue}[${red}*${blue}] 倒数${cyan} ${yellow}3${BackupPath}${background}
+    sleep 1s
+    echo -e ${blue}[${red}*${blue}] 倒数${cyan} ${yellow}2${BackupPath}${background}
+    sleep 1s
+    echo -e ${blue}[${red}*${blue}] 倒数${cyan} ${yellow}1${BackupPath}${background}
+    sleep 1s
+    cd $AFHOME
+    rm -rf $AFHOME/Server/${ServerName}
+    ScreenSizeMsgbox
+    whiptail --title "白狐-Script" \
+    --msgbox "卸载完成" \
+    ${HEIGHT} ${WIDTH}
+  fi
+  ;;
+esac
