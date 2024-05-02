@@ -47,7 +47,7 @@ pkg_list=("tar" \
 "git" \
 "tmux" \
 "jq"
-"dialog")
+"ncat")
 
 for package in ${pkg_list[@]}
 do

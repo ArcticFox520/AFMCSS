@@ -1,0 +1,53 @@
+#!/bin/env bash
+FRPCInstall(){
+URL="https://ipinfo.io"
+Address=$(curl -sL ${URL} | sed -n 's/.*"country": "\(.*\)",.*/\1/p')
+if [ "${Address}" = "CN" ]
+then
+  # 免费提供 请勿滥用
+  GitMirror="https://github.arcticfox.top"
+  DownloadURL="https://mirror.ghproxy.com/"
+else
+  GitMirror="https://github.com"
+fi
+https://github.com/fatedier/frp/releases/tag/v0.57.0
+URL="${GitMirror}/fatedier/frp/releases"
+echo -e ${blue}[${green}*${blue}] ${cyan}正在获取 ${yellow}版本信息...${background}
+FRPVersion=$(curl ${URL} | grep '</h2>' | grep 0.* | sed '1s/.*>\(.*\)<.*/\1/p' | head -n 1)
+FRPVersionNumber$(echo ${FRPVersion} | sed 's|v||g')
+FRPDownloadURL="${DownloadURL}https://github.com/fatedier/frp/releases/download/${FRPVersion}/frp_${FRPVersionNumber}_linux_arm64.tar.gz"
+Download FRP.tar.gz ${FRPDownloadURL}
+
+}
+ARCH=$(uname -m)
+case "$ARCH" in
+  aarch64|arm64|armv8|armv9)
+    ARCH="arm64"
+    FRPCInstall
+    ;;
+  arm*|aarch32)
+    ScreenSizeMsgbox
+    dialog --title "白狐-Script" \
+    --msgbox "十分抱歉 您的架构为${ARCH} \n无法运行Minecraft服务器" \
+    ${HEIGHT} ${WIDTH}
+    exit 3
+    ;;
+  x86_64|x64|amd64)
+    ARCH="amd64"
+    FRPCInstall
+    ;;
+  i386|i686|x86)  
+    ScreenSizeMsgbox
+    dialog --title "白狐-Script" \
+    --msgbox "十分抱歉 您的架构为${ARCH} \n无法运行Minecraft服务器" \
+    ${HEIGHT} ${WIDTH}
+    exit 3
+    ;;
+  *)
+    ScreenSizeMsgbox
+    dialog --title "白狐-Script" \
+    --msgbox "十分抱歉 您的架构为${ARCH} \n属于未知架构" \
+    ${HEIGHT} ${WIDTH}
+    exit 3
+    ;;
+esac

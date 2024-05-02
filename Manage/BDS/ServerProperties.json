@@ -3,7 +3,7 @@
     "ConfigurationName": "服务器名称",
     "ConfigurationItem": "server-name",
     "type": "String",
-    "Description": "作为服务器在游戏内服务器列表中显示的名称。",
+    "Description": "作为服务器在游戏内的服务器列表中显示的名称。",
     "Source": "Minecraft Wiki"
   },
   {

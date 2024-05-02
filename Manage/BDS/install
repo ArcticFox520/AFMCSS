@@ -124,8 +124,8 @@ echo -e ${blue}[${green}*${blue}] ${cyan}开始安装 ${yellow}Box64${background
 make install
 mv box64 /usr/local/bin/box64
 cd ../../
+rm -rf Box64
 echo -e ${blue}[${green}*${blue}] ${cyan}安装完成${background}
-rm -rf box64
 }
 
 

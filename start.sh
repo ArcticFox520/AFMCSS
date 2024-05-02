@@ -19,3 +19,5 @@ fi
 touch /usr/local/bin/afmc
 echo ${Command} > /usr/local/bin/afmc
 chmod +x /usr/local/bin/afmc
+
+

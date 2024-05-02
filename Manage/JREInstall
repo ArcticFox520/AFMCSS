@@ -64,13 +64,16 @@ else
   if [ "${Address}" = "CN" ]
   then
     # 免费提供 请勿滥用
-    GitMirror="https://ghproxy.arcticfox.top/"
+    GitMirror="https://github.arcticfox.top"
+    DownloadURL="https://mirror.ghproxy.com/"
+  else
+    GitMirror="https://github.com"
   fi
-  URL="${GitMirror}https://github.com/adoptium/temurin${JavaVersion}-binaries/releases"
+  URL="${GitMirror}/adoptium/temurin${JavaVersion}-binaries/releases"
   echo -e ${blue}[${green}*${blue}] ${cyan}正在获取 ${yellow}版本信息...${background}
   JREJavaVersion=$(curl ${URL} | grep '</h2>' | grep jdk | sed '1s/.*>\(.*\)<.*/\1/p' | head -n 1)
   Version=$(echo ${JREJavaVersion} | sed 's/jdk-//g' | sed 's/+/_/g')
-  JREDownloadURL=${URL}/download/${JREJavaVersion}/OpenJDK${JavaVersion}U-debugimage_${ARCH}_linux_hotspot_${Version}.tar.gz
+  JREDownloadURL="${DownloadURL}https://github.com/download/${JREJavaVersion}/OpenJDK${JavaVersion}U-debugimage_${ARCH}_linux_hotspot_${Version}.tar.gz"
 fi
 Download JRE.tar.gz ${JREDownloadURL}
 if [ -e $BHHOME/Server/JRE${JavaVersion} ]
