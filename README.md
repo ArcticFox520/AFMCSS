@@ -33,7 +33,7 @@
 #### 安装方法
 ```
 git clone --depth=1 https://github.com/ArcticFox520/AFMCSS
-bash AFMCSS/start.sh
+bash AFMCSS/install
 afmc
 ```
 
