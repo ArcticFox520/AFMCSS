@@ -9,13 +9,13 @@
 给本项目多提几个 issues，或许有一天，世界会变得更加美好呢！*^O^* </p>
 
 #### 支持系统
-[x] 1. Ubuntu
-[x] 2. Debian
-[x] 3. ArchLinux
-[x] 4. Centos
+ [x] 1. Ubuntu
+ [x] 2. Debian
+ [x] 3. ArchLinux
+ [x] 4. Centos
 
 #### 支持核心
-[x] 1.  BDS
+ [x] 1.  BDS
 
 #### QQ群
 
