@@ -1,4 +1,3 @@
-<a href='https://gitee.com/baihu433/Yunzai-Bot-Shell/stargazers'><img src='https://gitee.com/baihu433/Yunzai-Bot-Shell/badge/star.svg?theme=dark' alt='star'></img></a>
 <h1 align="center">白狐-AFMCSS</h1>
 <hr/>
 
@@ -31,9 +30,17 @@
 <hr>
 
 #### 安装方法
+
+##### 使用Git 
 ```
+# 请在您想要安装的目录执行
 git clone --depth=1 https://github.com/ArcticFox520/AFMCSS
 bash AFMCSS/install
 afmc
 ```
 
+##### 使用cURL
+```
+# 请在您想要安装的目录执行
+bash -c "$(curl -L https://raw.githubusercontent.com/ArcticFox520/AFMCSS/main/install)"
+```

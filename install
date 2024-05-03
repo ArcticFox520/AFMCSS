@@ -8,11 +8,13 @@ purple="\033[35m"
 cyan="\033[36m"
 white="\033[37m"
 background="\033[0m"
+
 AFHOME="$(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)"
-OldHOME=$(grep AFHOME ${AFHOME}/Manage/config)
-sed -i "s|${OldHOME}|AFHOME=$AFHOME|g" ${AFHOME}/Manage/config
+AFHOME=$AFHOME/AFMCSS
+OldHOME=$(grep AFHOME $AFHOME/Manage/config)
+sed -i "s|$OldHOME|AFHOME=$AFHOME|g" $AFHOME/Manage/config
 echo -e ${blue}[${green}*${blue}] AFMCSS根目录已更改为 ${yellow}$AFHOME${background}
-Command="bash ${AFHOME}/Manage/Main.sh $AFHOME"
+Command="bash $AFHOME/Manage/Main.sh $AFHOME"
 if [ -e /usr/local/bin/afmc ];then
   rm /usr/local/bin/afmc
 fi
@@ -66,7 +68,7 @@ pkg_list=("tar" \
 "unzip" \
 "git" \
 "tmux" \
-"jq"
+"jq" \
 "ncat")
 
 for package in ${pkg_list[@]}
