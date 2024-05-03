@@ -35,7 +35,7 @@
 ```
 # 请在您想要安装的目录执行
 git clone --depth=1 https://github.com/ArcticFox520/AFMCSS
-bash AFMCSS/install
+bash AFMCSS/start
 afmc
 ```
 
