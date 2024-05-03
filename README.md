@@ -1,7 +1,12 @@
-# Minecraft-Server一键部署
+<a href='https://gitee.com/baihu433/Yunzai-Bot-Shell/stargazers'><img src='https://gitee.com/baihu433/Yunzai-Bot-Shell/badge/star.svg?theme=dark' alt='star'></img></a>
+<h1 align="center">白狐-AFMCSS</h1>
+<hr/>
 
 #### 介绍
 适用于Linux(服务器)和termux(手机)的Minecraftjava服务器一键部署脚本
+
+<p>有问题应该尽早反馈，整天想着喷它，可是坏孩子哟！ (╯°□°）╯︵ ┻━┻<br>
+给本项目多提几个 issues，或许有一天，世界会变得更加美好呢！*^O^* </p>
 
 #### 支持系统
 [x] 1. Ubuntu
@@ -10,23 +15,25 @@
 [x] 4. Centos
 
 #### 支持核心
-[x] 1.  xxxx
-2.  xxxx
-3.  xxxx
+[x] 1.  BDS
 
-#### 参与贡献
+#### QQ群
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+<details markdown='1'><summary>展开/收起</summary>
 
+[戳我跳转QQ(大佬群)(①群)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=WtGelvZbOVQ4yYYZswm9ZZ5kPHkD4H8o&authKey=xz1zyGxWG7bz5X%2BgvWunX9qGUsUq%2BDomb4p02FqXIuqXd8hoxTYvdCZozBzLeFOf&noverify=0&group_code=705226976)
 
-#### 特技
+[戳我跳转QQ(新手群)(②群)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=ttH53_Pw6dBkbBimPfEq1M8LdwvNwOeZ&authKey=BUwoqpgofF27nTz4M6JJ4UPvgv3iFcDzl3Po0PgsQf36oxFT6Xch7DbJ4U24s%2BFn&noverify=0&group_code=596660282)
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+[戳我跳转QQ(专小白群)(③群)](http://qm.qq.com/cgi-bin/qm/qr?_wv=1027&k=KxKeK3PMw8i_ql3NH-m_iOfpU1nMkLIz&authKey=zaKN%2BeWsFWbPq6zXgwKNdN%2BSjLH1YSQRo9edHq4T%2B5R7LcG8eHSCQdNfsC%2FhBtKk&noverify=0&group_code=879718035)
+
+</details>
+<hr>
+
+#### 安装方法
+```
+git clone --depth=1 https://github.com/ArcticFox520/AFMCSS
+bash AFMCSS/start.sh
+afmc
+```
+

@@ -220,7 +220,7 @@ case ${Number} in
 esac
 }
 
-function LoopMenu(){
+function LoopWebDAVMENU(){
 while true
 do
   WebDAVMENU
@@ -229,7 +229,7 @@ do
   then
     exit
   fi
-  LoopMenu
+  LoopWebDAVMENU
 done
 }
-LoopMenu
+LoopWebDAVMENU
