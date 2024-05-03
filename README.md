@@ -43,4 +43,10 @@ afmc
 ```
 # 请在您想要安装的目录执行
 bash -c "$(curl -L https://raw.githubusercontent.com/ArcticFox520/AFMCSS/main/install)"
+afmc
+```
+
+#### 更新方法
+```
+afmc update
 ```

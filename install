@@ -131,6 +131,7 @@ Command="bash $AFHOME/Manage/Main.sh $AFHOME"
 if [ -e /usr/local/bin/afmc ];then
   rm /usr/local/bin/afmc
 fi
-touch /usr/local/bin/afmc
-echo ${Command} > /usr/local/bin/afmc
+cp $AFHOME/afmc /usr/local/bin/afmc
+sed -i "s|Command|${Command}|g" /usr/local/bin/afmc
+sed -i "s|PATH|$AFHOME|g" /usr/local/bin/afmc
 chmod +x /usr/local/bin/afmc

@@ -1,6 +1,7 @@
 #!/bin/env bash
 AFHOME=$1
 source $AFHOME/Manage/config
+
 ManageServerMenu(){
 ServerCore="$1"
 ServerName="$2"
