@@ -111,16 +111,16 @@ then
 else
   GitMirror="https://github.com"
 fi
-GitBox64(){
+
 echo -e ${blue}[${green}*${blue}] 正在克隆 ${yellow} AFMCSS${background}
-if git clone --depth=1 -b main ${GitMirror}/ptitSeb/box64 ./Box64
+if git clone --depth=1 -b main ${GitMirror}/ArcticFox520/AFMCSS
 then
   echo -e ${blue}[${green}*${blue}] ${cyan}克隆完成.${background}
 else
   echo -e ${blue}[${red}*${blue}] ${cyan}克隆失败.${background}
   exit
 fi
-}
+
 
 AFHOME="$(cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd)"
 AFHOME=$AFHOME/AFMCSS
