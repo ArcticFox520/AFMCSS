@@ -3,7 +3,6 @@ AFHOME=$1
 source $AFHOME/Manage/config
 MCversion=$(cat version)
 ServerName=$2
-echo $2
 config=$AFHOME/Manage/config
 StartSoftware=$(grep StartSoftware ${config} | sed 's/StartSoftware=//g')
 StartSoftwarePath=$AFHOME/Manage/StartSoftware
@@ -226,11 +225,11 @@ ${HEIGHT} ${WIDTH} ${OPTION} \
 "5" "🌷 卸载服务器" \
 "0" "🍥 返回主菜单" \
 3>&1 1>&2 2>&3)
-feedback=$?
-if [ ${feedback} == 1 ]
-then
-  return 3
-fi
+# feedback=$?
+# if [ ${feedback} == 1 ]
+# then
+  # return 3
+# fi
 case ${Number} in
 1)
   if StartCheck

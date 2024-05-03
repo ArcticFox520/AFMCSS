@@ -1,0 +1,24 @@
+[common]
+user = 21vcq3br3r4nj92j8olp1un077b2arx0
+sakura_mode = true
+use_recover = true
+login_fail_exit = false
+
+protocol = tcp
+tcp_mux = true
+pool_count = 1
+
+# for upstream 0.50.0+
+tls_enable = false
+disable_custom_tls_first_byte = false
+
+token = SakuraFrpClientToken
+server_addr = cn-cd-dx-tmp7.natfrp.cloud
+server_port = 7000
+
+[Minecraft]
+# id = 15028697
+type = udp
+local_ip = 127.0.0.1
+local_port = 19132
+remote_port = 40932
