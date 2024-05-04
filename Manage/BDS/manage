@@ -258,6 +258,7 @@ case ${Number} in
   then
     bash ${StartSoftwarePath} ${StartSoftware} log ${ServerName}
   elif [ $? == 2 ]
+  then
     whiptail --title "MC-SM" \
     --msgbox "${ServerName} [未启动]" \
     ${HEIGHT} ${WIDTH}

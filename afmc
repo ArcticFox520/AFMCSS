@@ -10,6 +10,6 @@ update)
   cd $AFHOME
   git fetch --all
   git reset --hard origin/main
-  git pull
   ;;
+esacsac ;;
 esac
