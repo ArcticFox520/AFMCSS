@@ -168,9 +168,6 @@ if bash ${StartSoftwarePath} ${StartSoftware} list 2>&1 | grep -q ${ServerName} 
 then
   if ncat -z -w 1 127.0.0.1 ${Port} -u
   then
-    whiptail --title "MC-SM" \
-    --msgbox "${ServerName} [已启动]" \
-    ${HEIGHT} ${WIDTH}
     return 0
   else
     whiptail --title "MC-SM" \
@@ -182,9 +179,6 @@ elif ncat -z -w 1 127.0.0.1 ${Port} -u
 then
   if bash ${StartSoftwarePath} ${StartSoftware} list 2>&1 | grep -q ${ServerName} > /dev/null 2>&1
   then
-    whiptail --title "MC-SM" \
-    --msgbox "${ServerName} [已启动]" \
-    ${HEIGHT} ${WIDTH}
     return 0
   else
     whiptail --title "MC-SM" \
@@ -225,14 +219,15 @@ ${HEIGHT} ${WIDTH} ${OPTION} \
 "5" "🌷 卸载服务器" \
 "0" "🍥 返回主菜单" \
 3>&1 1>&2 2>&3)
-# feedback=$?
-# if [ ${feedback} == 1 ]
-# then
-  # return 3
-# fi
+feedback=$?
+if [ ${feedback} == 1 ]
+then
+  return 3
+fi
 case ${Number} in
 1)
-  if StartCheck
+  StartCheck
+  if [ $? == 2 ]
   then
     ARCH=$(uname -m)
     case "$ARCH" in
@@ -250,13 +245,19 @@ case ${Number} in
     whiptail --title "MC-SM" \
     --msgbox "${ServerName} 启动完成" \
     ${HEIGHT} ${WIDTH}
+  elif [ $? == 2 ]
+  then
+    whiptail --title "MC-SM" \
+    --msgbox "${ServerName} [已启动]" \
+    ${HEIGHT} ${WIDTH}
   fi
   ;;
 2)
-  if StartCheck
+  StartCheck
+  if [ $? == 0 ]
   then
     bash ${StartSoftwarePath} ${StartSoftware} log ${ServerName}
-  else
+  elif [ $? == 2 ]
     whiptail --title "MC-SM" \
     --msgbox "${ServerName} [未启动]" \
     ${HEIGHT} ${WIDTH}
@@ -381,4 +382,19 @@ do
   LoopMenu
 done
 }
-LoopMenu
+LoopMenuthen
+    exit
+  fi
+  LoopMenu
+done
+}
+LoopMenuENU
+  feedback=$?
+  if [ ${feedback} == 3 ]
+  then
+    exit
+  fi
+  LoopMenu
+done
+}
+LoopMenuu
