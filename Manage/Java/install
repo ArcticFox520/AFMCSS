@@ -8,13 +8,37 @@ do
   sleep 3s
 done
 
+StableReleases=$(echo $JavaVersion | awk -F' 1.0 ' '{print $1}' && echo 1.0)
+
+SnapshotPreview=$(echo $JavaVersion | sed s/"$(echo ${StableReleases}) "//g | awk -F' 1.3 ' '{print $1}' && echo 1.3)
+
+ScreenSizeMsgbox
+if $(whiptail --title "MCServer-BDS" \
+--yes-button "稳定版" \
+--no-button "测试版" \
+--yesno "请选择您的版本" \
+${HEIGHT} ${WIDTH} \
+3>&1 1>&2 2>&3)
+then
+  JavaVersion="${StableReleases}"
+else
+  JavaVersion="${SnapshotPreview}"
+fi
+
 for version in ${JavaVersion}
 do
   options="${options} ${version} Java"
 done
 
 ScreenSizeMenu
-JavaCoreVersion=$(dialog \
+JavaCoreVersionType=$(whiptail \
+--title "MCServer" \
+--menu "您希望适配哪个Minecraft版本?" \
+${HEIGHT} ${WIDTH} ${OPTION} ${options} \
+3>&1 1>&2 2>&3)
+
+ScreenSizeMenu
+JavaCoreVersion=$(whiptail \
 --title "MCServer" \
 --menu "您希望适配哪个Minecraft版本?" \
 ${HEIGHT} ${WIDTH} ${OPTION} ${options} \

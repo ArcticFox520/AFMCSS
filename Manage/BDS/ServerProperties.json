@@ -10,6 +10,11 @@
     "ConfigurationName": "游戏模式",
     "ConfigurationItem": "gamemode",
     "type": "Options",
+    "OptionsName": [
+      "生存",
+      "创造",
+      "冒险"
+    ],
     "Options": [
       "survival",
       "creative",

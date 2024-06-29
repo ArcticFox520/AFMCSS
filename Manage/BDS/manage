@@ -288,13 +288,13 @@ case ${Number} in
     Path=$(pwd)
     cd ..
     ZipName="$(date +%Y%m%d)-${ServerName}-Full"
-    tar cf - ${ServerName} | gzip > ${ZipName}.tar.gz
+    tar -cf - ${ServerName} | pv -s $(du -sb BDS-FOX | awk '{print $1}') | gzip > ${ZipName}.tar.gz
     echo -e ${blue}[${green}*${blue}] ${cyan}打包完成${background}
   ;;
   2)
     echo -e ${blue}[${green}*${blue}] ${cyan}开始备份${background}
     ZipName="$(date +%Y%m%d)-${ServerName}-Worlds"
-    tar cf - worlds | gzip > ${ZipName}.tar.gz
+    tar -cf - worlds | pv -s $(du -sb BDS-FOX | awk '{print $1}') | gzip > ${ZipName}.tar.gz
     echo -e ${blue}[${green}*${blue}] ${cyan}打包完成${background}
   ;;
   3)
@@ -304,7 +304,7 @@ case ${Number} in
     cp -f allowlist.json Config/allowlist.json
     cp -f permissions.json Config/permissions.json
     ZipName="$(date +%Y%m%d)-${ServerName}-Config"
-    tar cf - Config | gzip > ${ZipName}.tar.gz
+    tar -cf - Config | pv -s $(du -sb BDS-FOX | awk '{print $1}') | gzip > ${ZipName}.tar.gz
     echo -e ${blue}[${green}*${blue}] ${cyan}打包完成${background}
     rm -rf Config
     ;;
@@ -343,6 +343,7 @@ case ${Number} in
   whiptail --title "MC-SM" \
   --msgbox "备份完成" \
   ${HEIGHT} ${WIDTH}
+  return 0
   ;;
 5)
   ScreenSizeMsgbox
@@ -364,6 +365,7 @@ case ${Number} in
     whiptail --title "MC-SM" \
     --msgbox "卸载完成" \
     ${HEIGHT} ${WIDTH}
+    return 3
   fi
   ;;
 0)
@@ -383,19 +385,4 @@ do
   LoopMenu
 done
 }
-LoopMenuthen
-    exit
-  fi
-  LoopMenu
-done
-}
-LoopMenuENU
-  feedback=$?
-  if [ ${feedback} == 3 ]
-  then
-    exit
-  fi
-  LoopMenu
-done
-}
-LoopMenuu
+LoopMenu

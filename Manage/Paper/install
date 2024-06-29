@@ -19,7 +19,7 @@ done
 i=
 
 ScreenSizeMenu
-PaperCoreVersion=$(dialog \
+PaperCoreVersion=$(whiptail \
 --title "MCServer" \
 --menu "您希望适配哪个Minecraft版本?" \
 ${HEIGHT} ${WIDTH} ${OPTION} ${options} \

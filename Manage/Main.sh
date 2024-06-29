@@ -43,11 +43,6 @@ Number=$(whiptail \
 ${HEIGHT} ${WIDTH} ${OPTION} \
 ${ServerName} \
 3>&1 1>&2 2>&3)
-feedback=$?
-if [ ${feedback} == 1 ]
-then
-  return
-fi
 ServerName=$(ls -1 $AFHOME/Server | sed -n "${Number}p")
 if [[ ${ServerName} == "BDS"* ]]
 then
