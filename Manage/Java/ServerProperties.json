@@ -1,88 +1,4 @@
-这是一个Minecraft服务器的配置文件（通常是server.properties文件）的片段。下面是对各个配置项的解释：
-
-accepts-transfers=false
-是否接受其他服务器（如Minecraft Realms）的传输。
-allow-flight=false
-是否允许玩家在没有飞行权限的情况下飞行（通常与创造模式或作弊模式有关）。
-allow-nether=true
-是否允许玩家访问下界（地狱）。
-broadcast-console-to-ops=true
-是否在控制台向操作员广播消息。
-broadcast-rcon-to-ops=true
-是否在RCON（远程控制台）连接时向操作员广播消息。
-difficulty=easy
-游戏难度设置（简单、普通、困难）。
-enable-command-block=false
-是否启用命令方块。
-enable-jmx-monitoring=false
-是否启用JMX（Java Management Extensions）监控。
-enable-query=false
-是否启用查询协议，以便外部工具可以获取服务器状态。
-enable-rcon=false
-是否启用远程控制台（RCON）。
-enable-status=true
-是否允许Minecraft客户端通过/status命令查询服务器状态。
-enforce-secure-profile=true
-是否强制使用安全的玩家配置文件。
-enforce-whitelist=false
-是否启用白名单，仅允许白名单上的玩家连接。
-entity-broadcast-range-percentage=100
-实体广播范围的百分比。
-force-gamemode=false
-是否强制所有玩家使用特定的游戏模式。
-function-permission-level=2
-函数命令所需的权限级别。
-gamemode=survival
-默认游戏模式（生存、创造、冒险等）。
-generate-structures=true
-是否生成自然结构（如村庄、要塞等）。
-generator-settings={}
-世界生成器的设置。
-hardcore=false
-是否启用硬核模式（死亡后无法复活）。
-hide-online-players=false
-是否隐藏在线玩家列表。
-initial-disabled-packs 和 initial-enabled-packs
-初始禁用和启用的资源包。
-level-seed=
-世界的种子（如果未设置，则为随机）。
-level-type=minecraft:normal
-世界的类型（如正常、平坦等）。
-log-ips=true
-是否在日志中记录玩家的IP地址。
-max-chained-neighbor-updates=1000000
-最大连续邻居更新的数量。
-max-players=20
-服务器的最大玩家数量。
-max-tick-time=60000
-每个游戏刻（tick）的最大毫秒数。
-max-world-size=29999984
-世界的最大大小（以方块为单位）。
-motd=A Minecraft Server
-服务器的消息提示（MOTD）。
-network-compression-threshold=256
-网络压缩的阈值。
-online-mode=true
-是否启用在线模式验证（检查玩家的Minecraft账号）。
-op-permission-level=4
-操作员命令所需的权限级别。
-player-idle-timeout=0
-玩家空闲超时时间（0表示无超时）。
-prevent-proxy-connections=false
-是否阻止代理连接。
-pvp=true
-是否允许玩家之间的PVP（玩家对玩家）伤害。
-query.port=25565
-查询协议的端口。
-rate-limit=0
-限制每个IP地址的连接尝试频率。
-rcon.password=
-远程控制台（RCON）的密码（此处为空）。
-rcon.port=25575
-远程控制台
-
-
-{
+[
   {
     "ConfigurationName": "服务器名称",
     "ConfigurationItem": "level-name",
@@ -138,5 +54,32 @@ rcon.port=25575
     "Description": "决定生成的地图的类型。",
     "Source": "Minecraft Wiki"
   },
-}
-
+  {
+    "ConfigurationName": "正版验证",
+    "ConfigurationItem": "online-mode",
+    "type": "Boolean",
+    "Description": "检查玩家的Minecraft正版账号。",
+    "Source": "Minecraft Wiki"
+  },
+  {
+    "ConfigurationName": "踢出时间",
+    "ConfigurationItem": "player-idle-timeout",
+    "type": "Number",
+    "Description": "玩家空闲超时踢出时间。",
+    "Source": "Minecraft Wiki"
+  },
+  {
+    "ConfigurationName": "玩家互相伤害",
+    "ConfigurationItem": "pvp",
+    "type": "Boolean",
+    "Description": "设置玩家是否能够互相伤害。",
+    "Source": "Minecraft Wiki"
+  },
+  {
+    "ConfigurationName": "游戏端口",
+    "ConfigurationItem": "query.port",
+    "type": "Number",
+    "Description": "设置游戏运行时的端口。",
+    "Source": "Minecraft Wiki"
+  }
+]

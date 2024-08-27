@@ -93,6 +93,8 @@ Number=$(whiptail \
 --menu "您想要选择哪个服务器核心？" \
 ${HEIGHT} ${WIDTH} ${OPTION} \
 "1" "🍀 Minecraft-BDS" \
+"2" "🌸 Minecraft-Java" \
+"3" "🍁 Minecraft-Paper" \
 "0" "🍥 返回脚本主菜单" \
 3>&1 1>&2 2>&3)
 feedback=$?
@@ -107,32 +109,9 @@ case ${Number} in
   2)
     ServerCore="Java"
     ;;
-  # 3)
-    # ServerCore="Sponge"
-    # ScreenSizeMsgbox
-    # if $(whiptail --title "MCServer-Spigot" \
-    # --yes-button "SpongeVanilla" \
-    # --no-button "SpongeForge" \
-    # --yesno "请选择您的Spigot类型" \
-    # ${HEIGHT} ${WIDTH})
-    # then
-      # SpongeCore="SpongeVanilla"
-    # else
-      # SpongeCore="SpongeForge"
-    # fi
-    # ;;
   3)
-    ServerCore="Spigot"
-    ;;
-  4)
     ServerCore="Paper"
     ;;
-  5)
-    ServerCore="Purpur"
-    ;;
-  # 6)
-  #   ServerCore="Forge"
-  #   ;;
   0)
     return
     ;;

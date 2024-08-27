@@ -9,15 +9,6 @@ cyan="\033[36m"
 white="\033[37m"
 background="\033[0m"
 
-export red="\033[31m"
-export green="\033[32m"
-export yellow="\033[33m"
-export blue="\033[34m"
-export purple="\033[35m"
-export cyan="\033[36m"
-export white="\033[37m"
-export background="\033[0m"
-
 if [ $(command -v apt) ];then
     pkg_install="apt install -y"
 elif [ $(command -v yum) ];then

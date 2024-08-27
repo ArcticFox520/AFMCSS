@@ -34,6 +34,13 @@ if (( $WIDTH <= 0 ));then
 fi
 }
 
+ServerConfig(){
+OPTIONS=
+
+
+
+}
+
 function Download(){
 file="$1"
 URL="$2"
